@@ -1,0 +1,5 @@
+.DS_Store
+Thumbs.db
+auto-route-safari-source/Generated/
+**/xcuserdata/
+**/*.xcuserstate

@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "Auto Route",
+  "short_name": "Auto Route",
+  "version": "1.0.0",
+  "description": "Routes selected and learned blocked sites through your proxy while keeping normal and media traffic direct.",
+  "permissions": [
+    "nativeMessaging",
+    "storage",
+    "tabs",
+    "webNavigation",
+    "webRequest"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Auto Route",
+    "default_popup": "popup.html"
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  }
+}

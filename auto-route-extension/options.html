@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Auto Route settings</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="settings-shell">
+    <aside class="sidebar">
+      <div class="brand">Auto Route</div>
+      <nav aria-label="Settings sections">
+        <a href="#proxy" class="active"><span>▦</span>Proxy</a>
+        <a href="#behavior"><span>☷</span>Behavior</a>
+        <a href="#domains"><span>◎</span>Domains</a>
+        <a href="#safari"><span>◇</span>Safari</a>
+      </nav>
+      <p class="privacy-note">Your settings stay on this device. The extension has no analytics or telemetry.</p>
+    </aside>
+
+    <main class="content">
+      <form id="settingsForm">
+        <section id="proxy" class="settings-section">
+          <div class="section-heading">
+            <div><h1>Proxy server</h1><p>The remote exit used only for domains that require it.</p></div>
+            <label class="master-toggle"><input id="enabled" type="checkbox"><span></span>Enabled</label>
+          </div>
+
+          <div class="proxy-grid">
+            <label>Protocol
+              <select id="scheme">
+                <option value="https">HTTPS</option>
+                <option value="http">HTTP</option>
+                <option value="socks5">SOCKS5</option>
+                <option value="socks4">SOCKS4</option>
+              </select>
+            </label>
+            <label class="host-field">Host
+              <input id="host" type="text" placeholder="proxy.example.com" autocomplete="off" spellcheck="false">
+            </label>
+            <label>Port
+              <input id="port" type="number" min="1" max="65535" inputmode="numeric">
+            </label>
+          </div>
+
+          <div class="auth-grid">
+            <label>Username <small>optional</small>
+              <input id="username" type="text" autocomplete="username">
+            </label>
+            <label>Password <small>optional</small>
+              <input id="password" type="password" autocomplete="current-password">
+            </label>
+          </div>
+          <p class="field-note">Chrome and Edge store credentials in extension storage. Safari may display the native macOS proxy credential prompt once and can save the password in Keychain.</p>
+        </section>
+
+        <section id="behavior" class="settings-section">
+          <div class="section-heading"><div><h2>Routing behavior</h2><p>Conservative defaults keep normal browsing and video traffic direct.</p></div></div>
+          <div class="toggle-list">
+            <label><input id="proxyRu" type="checkbox"><span class="toggle-ui"></span><span><strong>Route .ru domains through proxy</strong><small>Applies before the first request.</small></span></label>
+            <label><input id="autoRetry" type="checkbox"><span class="toggle-ui"></span><span><strong>Retry failed pages through proxy</strong><small>Successful retries are remembered locally.</small></span></label>
+            <label><input id="retryHttp403" type="checkbox"><span class="toggle-ui"></span><span><strong>Treat HTTP 403 as blocked</strong><small>Off by default because some legitimate sites use 403 for authentication.</small></span></label>
+            <label><input id="autoDirectMedia" type="checkbox"><span class="toggle-ui"></span><span><strong>Keep media direct</strong><small>Video playlists, segments, and learned CDN domains bypass the proxy.</small></span></label>
+            <label><input id="mediaFailureFallback" type="checkbox"><span class="toggle-ui"></span><span><strong>Fallback to proxy for failing media</strong><small>Three media failures in 15 seconds temporarily proxy that media domain.</small></span></label>
+          </div>
+        </section>
+
+        <section id="domains" class="settings-section">
+          <div class="section-heading"><div><h2>Domain rules</h2><p>One domain per line. A rule includes its subdomains.</p></div></div>
+          <div class="domain-grid">
+            <label>Always proxy
+              <textarea id="manualProxyDomains" rows="8" placeholder="example.com"></textarea>
+              <small>Manual proxy rules have priority over learned rules.</small>
+            </label>
+            <label>Always direct
+              <textarea id="directDomains" rows="8" placeholder="example-cdn.com"></textarea>
+              <small>Use for sites that should never leave your normal connection.</small>
+            </label>
+            <label>Learned proxy
+              <textarea id="learnedProxyDomains" rows="8" placeholder="Domains appear here after a successful retry"></textarea>
+              <small>You can edit mistaken detections directly.</small>
+            </label>
+            <label>Media direct
+              <textarea id="directMediaDomains" rows="8" placeholder="video.example.net"></textarea>
+              <small>Cross-origin media hosts can be learned automatically.</small>
+            </label>
+          </div>
+        </section>
+
+        <section id="safari" class="settings-section">
+          <div class="section-heading"><div><h2>Safari companion</h2><p>Safari uses the same PAC routing rules through a minimal macOS bridge.</p></div></div>
+          <div id="safariStatus" class="safari-status">
+            <span class="status-dot"></span>
+            <div><strong>Checking companion status…</strong><small>The companion only updates macOS proxy routing; it does not inspect page contents.</small></div>
+          </div>
+        </section>
+
+        <div id="formFeedback" class="form-feedback" hidden></div>
+        <footer class="action-bar">
+          <div>
+            <button id="clearLearned" class="secondary" type="button">Clear learned domains</button>
+            <button id="clearMedia" class="secondary" type="button">Clear media fallbacks</button>
+          </div>
+          <button class="primary" type="submit">Save settings</button>
+        </footer>
+      </form>
+    </main>
+  </div>
+  <script src="router.js"></script>
+  <script src="options.js"></script>
+</body>
+</html>

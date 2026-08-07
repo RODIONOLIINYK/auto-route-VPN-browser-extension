@@ -1,0 +1,13 @@
+{
+  "name": "auto-route-browser-extension",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Lightweight selective proxy routing for Chrome, Edge, and Safari",
+  "scripts": {
+    "test": "node tests/router.test.js",
+    "check": "node --check auto-route-extension/background.js && node --check auto-route-safari-source/WebExtension/background.js && npm test"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
