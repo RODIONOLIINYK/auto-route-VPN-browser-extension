@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Auto Route",
   "short_name": "Auto Route",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "minimum_chrome_version": "111",
   "description": "Routes selected and learned blocked sites through your proxy while keeping normal and media traffic direct.",
   "permissions": [

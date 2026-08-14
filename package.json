@@ -1,6 +1,6 @@
 {
   "name": "auto-route-browser-extension",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
   "description": "Lightweight selective proxy routing for Chrome, Edge, and Safari",
   "scripts": {

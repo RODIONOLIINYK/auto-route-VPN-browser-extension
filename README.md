@@ -16,13 +16,14 @@ The interface automatically follows the operating system's light or dark appeara
 
 ## Downloads
 
-- [`Auto-Route-Chromium-1.0.0.zip`](Auto-Route-Chromium-1.0.0.zip) — Chrome and Edge package.
-- [`Auto-Route-Safari-Source-1.0.0.zip`](Auto-Route-Safari-Source-1.0.0.zip) — Safari WebExtension and macOS companion source.
+- [`Auto-Route-Chromium-1.1.0.zip`](https://github.com/RODIONOLIINYK/auto-route-VPN-browser-extension/releases/download/v1.1.0/Auto-Route-Chromium-1.1.0.zip) — Chrome and Edge package.
+- [`Auto-Route-Safari-macOS-1.1.0-Development-Only.zip`](https://github.com/RODIONOLIINYK/auto-route-VPN-browser-extension/releases/download/v1.1.0/Auto-Route-Safari-macOS-1.1.0-Development-Only.zip) — Personal Team-signed Safari extension app for local evaluation; it is not notarized or portable to other Macs.
+- [`Auto-Route-Safari-Source-1.1.0.zip`](https://github.com/RODIONOLIINYK/auto-route-VPN-browser-extension/releases/download/v1.1.0/Auto-Route-Safari-Source-1.1.0.zip) — Safari WebExtension and macOS companion source.
 - [`SHA256SUMS.txt`](SHA256SUMS.txt) — archive checksums.
 
 ## Chrome and Edge installation
 
-1. Extract `Auto-Route-Chromium-1.0.0.zip`.
+1. Extract `Auto-Route-Chromium-1.1.0.zip`.
 2. Open `chrome://extensions` or `edge://extensions`.
 3. Enable **Developer mode**, choose **Load unpacked**, and select `auto-route-extension`.
 4. Open Auto Route's settings and enter the protocol, host, port, and credentials supplied by your proxy provider.
@@ -35,6 +36,8 @@ The unpacked source is in [`auto-route-extension/`](auto-route-extension/).
 Safari does not expose the proxy API used by Chromium. The Safari build therefore includes a very small macOS menu-bar companion that serves the generated PAC script on loopback and applies its URL to the active macOS network service.
 
 Building and signing the native app requires macOS and Xcode. Follow [`auto-route-safari-source/README.md`](auto-route-safari-source/README.md) and [`SAFARI-XCODE-CHECKLIST.md`](auto-route-safari-source/SAFARI-XCODE-CHECKLIST.md).
+
+The `v1.1.0` development app was built with a free Apple Personal Team profile. Apple limits that profile to registered development devices and seven days, so other users should build the Safari source with their own team. A generally distributable Safari app still requires Developer ID signing and notarization.
 
 ## Proxy requirement
 
